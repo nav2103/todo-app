@@ -49,6 +49,12 @@ input {
   padding: 8px;
   width: 280px;
   color: #fff;
+  transition: 0.1s;
+  outline: none;
+}
+input:focus {
+  border: 1px solid #ab71f4;
+  /* border-radius: 8px; */
 }
 ::placeholder {
   color: #fff;
