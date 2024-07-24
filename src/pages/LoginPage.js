@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -7,7 +8,6 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Login Successful");
     try {
       const res = await axios.post(
         "https://task-manager-server-chi-three.vercel.app/user/login",
@@ -37,7 +37,7 @@ const LoginPage = () => {
               <input
                 type="text"
                 className="input"
-                placeholder="username@gmail.com"
+                placeholder="modi@gmail.com"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
@@ -62,7 +62,11 @@ const LoginPage = () => {
             <button type="submit">Login</button>
             <div className="small-text">
               Don't have an account?{" "}
-              <span className="primary-text">Sign Up</span>
+              <span className="primary-text">
+                <Link to="/register" className="auth-btn">
+                  Register
+                </Link>
+              </span>
             </div>
           </form>
         </div>
