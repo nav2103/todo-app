@@ -13,19 +13,26 @@ const RegisterPage = () => {
     e.preventDefault();
     if (password === cnfpassword) {
       try {
-        const res = await axios.post(
-          "https://task-manager-server-chi-three.vercel.app/user/add",
-          {
+        const res = await axios
+          .post("https://task-manager-server-chi-three.vercel.app/user/add", {
             name: name,
             emailId: username,
             passWord: password,
-          }
-        );
-        console.log(res);
-        alert("Registration Successful!");
-        navigate("/login");
+          })
+          .then(() => {
+            alert("Registration Successful!");
+            console.log(res);
+            setUsername("");
+            setCnfPassword("");
+            setName("");
+            setPassword("");
+            navigate("/login");
+          })
+          .catch((error) => {
+            alert(error.response.data.message);
+          });
       } catch (error) {
-        console.log("Error: " + error);
+        console.log(error);
       }
     } else {
       alert("Password doesn't match.");
