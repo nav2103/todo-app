@@ -2,8 +2,10 @@ import React from "react";
 import checkbox from "../assets/checkbox.png";
 import uncheckbox from "../assets/uncheckbox.png";
 import flag from "../assets/flag.png";
+import { useNavigate } from "react-router-dom";
 
 const Task = ({ tasks }) => {
+  const navigate = useNavigate();
   return (
     <div>
       {tasks &&
@@ -28,7 +30,10 @@ const Task = ({ tasks }) => {
                   alt="checkbox"
                 />
               </div>
-              <div className="task-content-container">
+              <div
+                className="task-content-container"
+                onClick={() => navigate("/details", { state: task })}
+              >
                 <div className="task-title-container">
                   <div className="task-title">{task.title}</div>
                   <div className={`task-priority ${priorityClass}`}>

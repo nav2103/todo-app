@@ -8,6 +8,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Tasks from "./pages/Tasks";
+import TaskDetails from "./pages/TaskDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/tasks" element={<Tasks />} />
+          <Route path="/details" element={<TaskDetails />} />
           <Route path="*" element={<Navigate to="/register" />} />
         </Routes>
       </Router>

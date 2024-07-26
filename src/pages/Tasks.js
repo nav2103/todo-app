@@ -65,7 +65,7 @@ const Tasks = () => {
           <div className="progress-bar-bg">
             <div className="progress-bar"></div>
           </div>
-          <p>1/3 done</p>
+          <p>1/{tasks?.length} done</p>
         </div>
         <div className="tasks-container">
           <Task tasks={tasks} />
