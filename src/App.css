@@ -101,6 +101,7 @@ button {
   width: 150px;
   border: none;
   border-radius: 16px;
+  font-weight: 600;
   color: #fff;
   padding: 8px;
   background-color: #ab71f4;
