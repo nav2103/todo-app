@@ -43,7 +43,9 @@ const Task = ({ tasks }) => {
                 <div className="task-desc">{task.description}</div>
                 <div className="task-date-container">
                   <img src={flag} alt="flag" />
-                  <div className="task-date">{task.duedate.slice(0, 10)}</div>
+                  <div className="task-date">
+                    {task.duedate.slice(0, 10).split("-").reverse().join("-")}
+                  </div>
                 </div>
               </div>
             </div>
