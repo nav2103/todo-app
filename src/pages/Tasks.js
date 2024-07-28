@@ -33,7 +33,7 @@ const Tasks = () => {
       <div className="tasks-outer">
         <div className="tasks-header-container">
           <div className="tasks-header">
-            <p>Namaste</p>
+            <p>Namaste,</p>
             <h3>{name}</h3>
           </div>
           <div className="settings-icon">
