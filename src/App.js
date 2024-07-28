@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import Tasks from "./pages/Tasks";
 import TaskDetails from "./pages/TaskDetails";
+import AddTask from "./pages/AddTask";
+import EditTask from "./pages/EditTask";
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/details" element={<TaskDetails />} />
-          <Route path="*" element={<Navigate to="/register" />} />
+          <Route path="/addtask" element={<AddTask />} />
+          <Route path="/edittask" element={<EditTask />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>
     </div>

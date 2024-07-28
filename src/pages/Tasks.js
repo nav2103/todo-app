@@ -4,8 +4,10 @@ import Task from "../components/Task";
 import setting from "../assets/settings.png";
 import search from "../assets/search.png";
 import sort from "../assets/sort.png";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
+  const navigate = useNavigate();
   const userName = localStorage.getItem("useremail");
   const name = localStorage.getItem("name");
   const [tasks, setTasks] = useState([]);
@@ -31,7 +33,7 @@ const Tasks = () => {
       <div className="tasks-outer">
         <div className="tasks-header-container">
           <div className="tasks-header">
-            <p>Good Morning</p>
+            <p>Namaste</p>
             <h3>{name}</h3>
           </div>
           <div className="settings-icon">
@@ -70,7 +72,14 @@ const Tasks = () => {
         <div className="tasks-container">
           <Task tasks={tasks} />
         </div>
-        <button className="add-task">+ Add new task</button>
+        <button
+          className="add-task"
+          onClick={() => {
+            navigate("/addtask");
+          }}
+        >
+          + Add new task
+        </button>
       </div>
     </>
   );

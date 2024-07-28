@@ -30,7 +30,13 @@ const TaskDetails = () => {
         </div>
         <div className="task-option-icons">
           <img src={deleteIcon} alt="delete" />
-          <img src={editIcon} alt="edit" />
+          <img
+            src={editIcon}
+            alt="edit"
+            onClick={() => {
+              navigate("/edittask", { state: taskData });
+            }}
+          />
         </div>
       </div>
       <div className="task-details-title">{taskData.title}</div>
