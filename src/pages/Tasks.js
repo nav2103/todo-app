@@ -5,29 +5,40 @@ import setting from "../assets/settings.png";
 import search from "../assets/search.png";
 import sort from "../assets/sort.png";
 import { useNavigate } from "react-router-dom";
+import { url } from "../utils";
 
 const Tasks = () => {
   const navigate = useNavigate();
   const userName = localStorage.getItem("useremail");
+  const [showLoader, setShowLoader] = useState(false);
   const name = localStorage.getItem("name");
   const [tasks, setTasks] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const completedTasks = tasks.filter((task) => task.completed);
+  const totalCompleted = completedTasks.length;
+  const totalTasks = tasks?.length;
+
+  const progressStyle = {
+    width: `calc((${totalCompleted}/${totalTasks})*100%)`,
+  };
+
   const fetchTasks = async () => {
     try {
-      const res = await axios
-        .get(
-          `https://task-manager-server-chi-three.vercel.app/task/user/${userName}`
-        )
-        .then((res) => {
-          console.log("received response: ", res);
-          setTasks(res?.data);
-        });
+      // setShowLoader(true);
+      const res = await axios.get(`${url}task/user/${userName}`);
+      // .then((res) => {
+      console.log("received response: ", res);
+      setTasks(res?.data);
+      // setShowLoader(false);
+      // });
     } catch (error) {
       console.log(error);
+      // setShowLoader(false);
     }
   };
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [refresh]);
   return (
     <>
       <div className="tasks-outer">
@@ -37,7 +48,13 @@ const Tasks = () => {
             <h3>{name}</h3>
           </div>
           <div className="settings-icon">
-            <img src={setting} alt="settings" />
+            <img
+              src={setting}
+              alt="settings"
+              onClick={() => {
+                navigate("/profile");
+              }}
+            />
           </div>
         </div>
         <div className="task-search-bar">
@@ -65,12 +82,18 @@ const Tasks = () => {
         </div>
         <div className="task-progress-container">
           <div className="progress-bar-bg">
-            <div className="progress-bar"></div>
+            <div className="progress-bar" style={progressStyle}></div>
           </div>
-          <p>1/{tasks?.length} done</p>
+          <p>
+            {totalCompleted}/{totalTasks} done
+          </p>
         </div>
         <div className="tasks-container">
-          <Task tasks={tasks} />
+          {showLoader ? (
+            <div>Loading...</div>
+          ) : (
+            <Task tasks={tasks} setRefresh={setRefresh} />
+          )}
         </div>
         <button
           className="add-task"

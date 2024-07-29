@@ -3,9 +3,20 @@ import checkbox from "../assets/checkbox.png";
 import uncheckbox from "../assets/uncheckbox.png";
 import flag from "../assets/flag.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { url } from "../utils";
 
-const Task = ({ tasks }) => {
+const Task = ({ tasks, setRefresh }) => {
   const navigate = useNavigate();
+
+  const handleClick = async (id) => {
+    try {
+      const res = await axios.put(`${url}task/status/${id}`);
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       {tasks &&
@@ -28,6 +39,9 @@ const Task = ({ tasks }) => {
                 <img
                   src={task.completed ? checkbox : uncheckbox}
                   alt="checkbox"
+                  onClick={() => {
+                    handleClick(task._id);
+                  }}
                 />
               </div>
               <div

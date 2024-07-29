@@ -1,16 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { url } from "../utils";
 
 const AddTask = () => {
   const navigate = useNavigate();
+  const userEmail = localStorage.getItem("useremail");
   const handleSumbit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "https://task-manager-server-chi-three.vercel.app/task/add",
-        taskData
-      );
+      const res = await axios.post(`${url}task/add`, taskData);
       console.log(res);
       alert("Task Added!");
       setTaskData({
@@ -19,15 +18,20 @@ const AddTask = () => {
         duedate: "",
         priority: "",
       });
+      navigate("/tasks");
     } catch (error) {
+      alert("Task addition failed!");
       console.log(error);
     }
   };
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
+    adddate: Date.now(),
+    completed: false,
     duedate: "",
     priority: "",
+    user: userEmail,
   });
   const handleChange = (e) => {
     // console.log(e);

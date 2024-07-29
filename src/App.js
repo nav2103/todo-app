@@ -11,6 +11,7 @@ import Tasks from "./pages/Tasks";
 import TaskDetails from "./pages/TaskDetails";
 import AddTask from "./pages/AddTask";
 import EditTask from "./pages/EditTask";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/details" element={<TaskDetails />} />
           <Route path="/addtask" element={<AddTask />} />
           <Route path="/edittask" element={<EditTask />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </Router>

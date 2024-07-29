@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import editIcon from "../assets/edit.png";
 import deleteIcon from "../assets/delete.png";
 import flagIcon from "../assets/flag.png";
+import axios from "axios";
+import { url } from "../utils";
 
 const TaskDetails = () => {
   const location = useLocation();
@@ -21,6 +23,18 @@ const TaskDetails = () => {
     default:
       priorityClass = "";
   }
+  const handleDelete = async () => {
+    try {
+      const res = await axios
+        .delete(`${url}task/delete/${taskData?._id}`)
+        .then(() => {
+          alert("Task Deleted Successfully!");
+          navigate("/tasks");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="task-details-outer">
       <div className="task-details-options">
@@ -29,7 +43,7 @@ const TaskDetails = () => {
           {taskData.adddate.slice(0, 10).split("-").reverse().join("-")}
         </div>
         <div className="task-option-icons">
-          <img src={deleteIcon} alt="delete" />
+          <img src={deleteIcon} alt="delete" onClick={handleDelete} />
           <img
             src={editIcon}
             alt="edit"
