@@ -165,7 +165,8 @@ button {
   background: none;
   width: 240px;
 }
-.task-search-bar select {
+.task-search-bar select,
+.task-title-filter select {
   background: none;
   border: none;
   outline: none;
