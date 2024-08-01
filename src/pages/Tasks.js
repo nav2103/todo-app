@@ -155,6 +155,7 @@ const Tasks = () => {
 
   useEffect(() => {
     fetchTasks();
+    //eslint-disable-next-line
   }, [refresh]);
   return (
     <>
