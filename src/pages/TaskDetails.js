@@ -31,6 +31,7 @@ const TaskDetails = () => {
           alert("Task Deleted Successfully!");
           navigate("/tasks");
         });
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
