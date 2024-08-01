@@ -23,7 +23,7 @@ Welcome to the **Task Nation** project! This application helps you manage your t
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/todo-app.git
+    git clone https://github.com/nav2103/todo-app.git
     cd todo-app
     ```
 
