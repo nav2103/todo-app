@@ -12,9 +12,9 @@ Welcome to the **Task Nation** project! This application helps you manage your t
 - 🔍 **Search Tasks**: Quickly find tasks with the search functionality.
 - 📅 **Filter Tasks**: Filter tasks by status (All, Completed, Pending, Today, Delayed).
 - 📈 **Progress Tracking**: Track the progress of your tasks.
-- 🔐 Login: Securely log in to your account.
-- 🆕 Register: Create a new account to start managing your tasks.
-- 🗑️ Delete Tasks: Remove tasks from your list.
+- 🔐 **Login**: Securely log in to your account.
+- 🆕 **Register**: Create a new account to start managing your tasks.
+- 🗑️ **Delete Tasks**: Remove tasks from your list.
 
 ## 🚀 Getting Started
 
@@ -22,16 +22,16 @@ Welcome to the **Task Nation** project! This application helps you manage your t
 
 1. Clone the repository:
 
-    ```bash
-    git clone https://github.com/nav2103/todo-app.git
-    cd todo-app
-    ```
+   ```bash
+   git clone https://github.com/nav2103/todo-app.git
+   cd todo-app
+   ```
 
 2. Install dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 ### 🔧 Usage
 
