@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import backIcon from "../assets/back.png";
+import userIcon from "../assets/user.png";
 
 const Profile = () => {
   const useremail = localStorage.getItem("useremail");
@@ -13,7 +15,14 @@ const Profile = () => {
   };
   return (
     <div className="task-profile-outer">
-      <h1>My Profile</h1>
+      <div className="task-profile-bg"></div>
+      <div className="back-button">
+        <img src={backIcon} alt="back" onClick={() => navigate("/tasks")} />
+      </div>
+      <div className="profile-content">
+        <div className="my-profile">My Profile</div>
+        <img src={userIcon} alt="user" />
+      </div>
       <div className="details-container">
         <div className="name-container">{name}</div>
         <div className="email-container">{useremail}</div>

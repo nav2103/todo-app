@@ -14,7 +14,8 @@ body {
 .auth-outer-container,
 .tasks-outer,
 .task-details-outer,
-.add-edit-outer {
+.add-edit-outer,
+.task-profile-outer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,6 +178,16 @@ button {
   font-size: 10px;
   padding: 2px;
 }
+.task-title-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.task-title-filter img {
+  height: 20px;
+  width: 20px;
+}
 .task-search-bar input:focus {
   border: none;
 }
@@ -212,6 +223,7 @@ button {
 .all-tasks-container p {
   font-size: 18px;
   font-weight: 600;
+  text-transform: capitalize;
 }
 .progress-bar-bg {
   background: rgba(171, 113, 244, 0.1);
@@ -378,4 +390,114 @@ select:focus {
   background: none;
   color: #ab71f4;
   border: 2px solid #ab71f4;
+}
+.add-task {
+  position: fixed;
+  bottom: 8vh;
+}
+
+.loader {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+.loader-large {
+  position: absolute;
+  inset: 0;
+  top: 20vh;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: #ac71f469;
+  border-radius: 10px;
+  animation: loading 2s infinite;
+}
+
+.loader-small {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  inset: 0;
+  top: 20vh;
+  margin: auto;
+  background-color: #ab71f4;
+  z-index: 2;
+  border-radius: 6px;
+  animation: loading 2s infinite reverse;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+.task-profile-outer {
+  height: 60vh;
+}
+.task-profile-bg {
+  height: 250px;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  background: radial-gradient(
+    333.18% 148.3% at -29.81% -33.02%,
+    rgba(9, 5, 13, 0.5) 0%,
+    rgba(33, 18, 48, 0.705) 100%
+  );
+  border-radius: 50%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.back-button {
+  width: 100%;
+  padding: 0 20px;
+  position: absolute;
+  top: 5vh;
+}
+.back-button img {
+  width: 25px;
+  height: 20px;
+}
+.profile-content img {
+  width: 200px;
+  height: 200px;
+}
+.profile-content {
+  margin-top: 20px;
+}
+.my-profile {
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.name-container {
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+.email-container {
+  font-size: 15px;
+  font-weight: 600;
+  color: #959daf;
+}
+.task-profile-outer button {
+  position: fixed;
+  bottom: 10vh;
 }

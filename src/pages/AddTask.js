@@ -30,7 +30,7 @@ const AddTask = () => {
     adddate: Date.now(),
     completed: false,
     duedate: "",
-    priority: "",
+    priority: "high",
     user: userEmail,
   });
   const handleChange = (e) => {

@@ -4,8 +4,11 @@ import Task from "../components/Task";
 import setting from "../assets/settings.png";
 import search from "../assets/search.png";
 import sort from "../assets/sort.png";
+import ascending from "../assets/ascending.png";
+import descending from "../assets/descending.png";
 import { useNavigate } from "react-router-dom";
 import { url } from "../utils";
+import { Audio } from "react-loader-spinner";
 
 const Tasks = () => {
   const navigate = useNavigate();
@@ -18,6 +21,8 @@ const Tasks = () => {
   const [filterType, setFilterType] = useState("all");
   const [searchValue, setSearchValue] = useState("");
   const [searchType, setSearchType] = useState("text");
+  const [sortValue, setSortValue] = useState("byname");
+  const [sortIcon, setSortIcon] = useState(descending);
   const completedTasks = filteredTasks.filter((task) => task.completed);
   const totalCompleted = completedTasks.length;
   const totalTasks = filteredTasks?.length;
@@ -73,11 +78,6 @@ const Tasks = () => {
       setFilteredTasks(tasks);
       return;
     }
-    // const searchedTasks = tasks.filter((task) => {
-    //   const title = task?.title?.toLowerCase();
-    //   return title.includes(value);
-    // });
-    // console.log(searchedTasks);
     let searchedTasks = [];
     if (searchType === "text") {
       searchedTasks = tasks.filter((task) => {
@@ -92,12 +92,56 @@ const Tasks = () => {
     }
     setFilteredTasks(searchedTasks);
   };
+  const handleSortChange = (e) => {
+    console.log(e.target.value);
+    let value = e.target.value;
+    setSortValue(value);
+    let sortedTasks = [];
+    if (value === "byname") {
+      sortedTasks = filteredTasks
+        ?.slice()
+        .sort((a, b) => a.title.localeCompare(b.title));
+      setFilteredTasks(sortedTasks);
+      // console.log(filteredTasks);
+    } else if (value === "bypriority") {
+      sortedTasks = filteredTasks?.slice().sort((a, b) => {
+        const priorityOrder = { low: 3, medium: 2, high: 1 };
+        return (
+          priorityOrder[a.priority.toLowerCase()] -
+          priorityOrder[b.priority.toLowerCase()]
+        );
+      });
+      setFilteredTasks(sortedTasks);
+    } else if (value === "bydate") {
+      sortedTasks = filteredTasks?.slice().sort((a, b) => {
+        let aDate = new Date(a.duedate);
+        let bDate = new Date(b.duedate);
+        return aDate - bDate;
+      });
+      setFilteredTasks(sortedTasks);
+      // console.log("filtered: ", filteredTasks);
+    }
+  };
+
+  const reverseTask = () => {
+    const reversedTasks = filteredTasks?.slice().reverse();
+    setFilteredTasks(reversedTasks);
+    setSortIcon((prev) => {
+      if (prev === ascending) {
+        return descending;
+      } else {
+        return ascending;
+      }
+    });
+    // console.log("Reversed tasks: ", reversedTasks);
+  };
 
   const fetchTasks = async () => {
     try {
       setShowLoader(true);
+      await new Promise((resolve) => setTimeout(resolve, 4000));
       const res = await axios.get(`${url}task/user/${userName}`).then((res) => {
-        console.log("received response: ", res);
+        // console.log("received response: ", res);
         setTasks(res?.data);
         setFilteredTasks(res?.data);
         setShowLoader(false);
@@ -190,14 +234,14 @@ const Tasks = () => {
         </div>
         <div className="task-line">{""}</div>
         <div className="all-tasks-container">
-          <p>All Tasks</p>
+          <p>{filterType} Tasks</p>
           <div className="task-title-filter">
-            <select name="sort" id="sort">
+            <select name="sort" id="sort" onChange={handleSortChange}>
               <option value="byname">By Name</option>
               <option value="bydate">By Date</option>
               <option value="bypriority">By Priority</option>
             </select>
-            <img src={sort} alt="sort" />
+            <img src={sortIcon} alt="sort" onClick={() => reverseTask()} />
           </div>
         </div>
         <div className="task-progress-container">
@@ -210,7 +254,10 @@ const Tasks = () => {
         </div>
         <div className="tasks-container">
           {showLoader ? (
-            <div>Loading...</div>
+            <div class="loader">
+              <div class="loader-small"></div>
+              <div class="loader-large"></div>
+            </div>
           ) : (
             <Task
               tasks={filteredTasks}
