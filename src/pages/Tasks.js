@@ -3,12 +3,10 @@ import React, { useEffect, useState } from "react";
 import Task from "../components/Task";
 import setting from "../assets/settings.png";
 import search from "../assets/search.png";
-import sort from "../assets/sort.png";
 import ascending from "../assets/ascending.png";
 import descending from "../assets/descending.png";
 import { useNavigate } from "react-router-dom";
 import { url } from "../utils";
-import { Audio } from "react-loader-spinner";
 
 const Tasks = () => {
   const navigate = useNavigate();
@@ -74,6 +72,7 @@ const Tasks = () => {
     const value = e.target.value.toLowerCase();
     console.log(value);
     setSearchValue(value);
+    console.log(searchValue);
     if (value === "") {
       setFilteredTasks(tasks);
       return;
@@ -96,6 +95,7 @@ const Tasks = () => {
     console.log(e.target.value);
     let value = e.target.value;
     setSortValue(value);
+    console.log(sortValue);
     let sortedTasks = [];
     if (value === "byname") {
       sortedTasks = filteredTasks
@@ -139,18 +139,20 @@ const Tasks = () => {
   const fetchTasks = async () => {
     try {
       setShowLoader(true);
-      await new Promise((resolve) => setTimeout(resolve, 4000));
+      await new Promise((resolve) => setTimeout(resolve, 3500));
       const res = await axios.get(`${url}task/user/${userName}`).then((res) => {
-        // console.log("received response: ", res);
         setTasks(res?.data);
         setFilteredTasks(res?.data);
         setShowLoader(false);
       });
+      console.log("received response: ", res);
+      // .then((res) => {});
     } catch (error) {
       console.log(error);
       setShowLoader(false);
     }
   };
+
   useEffect(() => {
     fetchTasks();
   }, [refresh]);

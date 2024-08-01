@@ -11,7 +11,7 @@ const Task = ({ tasks, setRefresh, setFilterType }) => {
 
   const handleClick = async (id) => {
     try {
-      const res = await axios.put(`${url}task/status/${id}`);
+      await axios.put(`${url}task/status/${id}`);
       setFilterType("all");
       setRefresh((prev) => !prev);
     } catch (error) {
