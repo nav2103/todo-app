@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# 📋 Task Nation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the **Task Nation** project! This application helps you manage your tasks efficiently and effectively.
 
-## Available Scripts
+### 🚀Live link: [Task Nation](https://tasknation.netlify.app/)
 
-In the project directory, you can run:
+## 📸 Screenshots
+![WhatsApp Image 2024-08-01 at 16 09 50_a766e0e4](https://github.com/user-attachments/assets/fd033094-73d2-41e5-bc43-fecbf53c9220)
+![WhatsApp Image 2024-08-01 at 16 09 51_5f10c3b1](https://github.com/user-attachments/assets/b87c4840-6912-4789-8452-b9793b440a9e)
+![WhatsApp Image 2024-08-01 at 16 09 51_77ed3743](https://github.com/user-attachments/assets/76d7608f-355b-4a69-9361-b0e8b9460f73)
+![WhatsApp Image 2024-08-01 at 16 09 51_4c9b0280](https://github.com/user-attachments/assets/8336195b-f11d-4f03-96c0-2659a3e3e1fc)
+![WhatsApp Image 2024-08-01 at 16 09 52_3b2a23d2](https://github.com/user-attachments/assets/caba97fe-d49c-474d-a3b4-ef6348fb62ab)
+![WhatsApp Image 2024-08-01 at 16 09 52_b2d50124](https://github.com/user-attachments/assets/e8ffeb27-5cf0-436c-a805-c075e153a5c5)
+![WhatsApp Image 2024-08-01 at 16 09 52_4fe7d857](https://github.com/user-attachments/assets/d49f4b52-5250-470d-b72f-af6c243412a1)
 
-### `npm start`
+## 🌟 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 📋 **Add Tasks**: Easily add new tasks to your list.
+- ✏️ **Edit Tasks**: Update your tasks as needed.
+- ✅ **Complete Tasks**: Mark tasks as completed.
+- 🔍 **Search Tasks**: Quickly find tasks with the search functionality.
+- 📅 **Filter Tasks**: Filter tasks by status (All, Completed, Pending, Today, Delayed).
+- 📈 **Progress Tracking**: Track the progress of your tasks.
+- 🔐 Login: Securely log in to your account.
+- 🆕 Register: Create a new account to start managing your tasks.
+- 🗑️ Delete Tasks: Remove tasks from your list.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### 📦 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+    ```bash
+    git clone https://github.com/your-username/todo-app.git
+    cd todo-app
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔧 Usage
 
-### `npm run eject`
+Run the app locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📂 Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+todo-app/
+├── public/
+│   ├── _redirects
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src/
+│    ├── assets/
+│    ├── components/
+│    │   └── Task.js
+│    ├── pages/
+│    │   ├── AddTask.js
+│    │   ├── EditTask.js
+│    │   ├── LoginPage.js
+│    │   ├── Profile.js
+│    │   ├── RegisterPage.js
+│    │   ├── TaskDetails.js
+│    │   └── Tasks.js
+│    ├── App.css
+│    ├── App.js
+│    ├── index.css
+│    ├── index.js
+│    ├── logo.svg
+│    └── utils.js
+├── .env
+├── .gitignore
+├── package.json
+├── README.md
+└── package-lock.json
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🛠️ Dependencies
 
-## Learn More
+- React
+- Axios
+- react-router-dom
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📧 Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- GitHub: [@nav2103](https://github.com/nav2103)
+- Email: [navneetsingh2103@gmail.com](mailto:navneetsingh2103@gmail.com)
